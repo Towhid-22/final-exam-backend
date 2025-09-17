@@ -1,11 +1,18 @@
 const express = require("express");
 const connectDB = require("./config/db");
+const cors = require("cors");
 const router = require("./router");
 const session = require("express-session");
 const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT || 5000;
 path = require("path");
+app.use(
+  cors({
+    origin: ["http://localhost:5173"],
+    credentials: true,
+  })
+);
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
